@@ -1,5 +1,16 @@
 @import './default.less';
 @import './loading.less';
+ul, li{
+  list-style: none;
+}
+.clearfix{
+  &::after{
+    content: '';
+    clear: both;
+    display: block;
+    visibility: hidden;
+  }
+}
 .container {
   background-color: @colorL;
   .nav-left {
@@ -26,5 +37,11 @@
   .ant-table-wrapper {
     margin-left: -1px;
     margin-right: -2px;
+  }
+}
+
+.operator-button{
+  button{
+    margin-right: 10px;
   }
 }

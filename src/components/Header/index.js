@@ -27,14 +27,23 @@ export default class Header extends React.Component{
         })
     }
     render() {
+        const menuType = this.props.menuType
         return(
             <div className="header">
                 <Row className="header-top">
-                    <Col span="24">
+                    {
+                        menuType ?
+                            <Col span="6" className="logo">
+                                <img className="logo" src="/assets/logo-ant.svg" />
+                                <span>bike MS通用管理系统</span>
+                            </Col> : ''
+                    }
+                    <Col span={menuType ? 18 : 24}>
                         <span>hello,{this.state.userName}</span>
                         <a href="#">退出</a>
                     </Col>
                 </Row>
+                {menuType ? '' :
                 <Row className="breadcrumb">
                     <Col span="4" className="breadcrumb-title">
                         首页
@@ -44,6 +53,7 @@ export default class Header extends React.Component{
                         <span className="weather-detail">晴天</span>
                     </Col>
                 </Row>
+            }
             </div>
         )
     }

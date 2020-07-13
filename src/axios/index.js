@@ -1,7 +1,29 @@
 import JsonP from 'jsonp'
 import axios from 'axios'
+import Utils from '../utils/utils'
 import { Modal } from 'antd'
 export default class Axios {
+    static requestList(_this, params, url) {
+        const data = {
+            params: params
+        }
+        this.Ajax({
+            url,
+            data
+        }).then((res) => {
+            if(res){
+                _this.setState({
+                    list: res.result.item_list.map((item, index) => {
+                        item.key = index
+                        return item
+                    }),
+                    pagination: Utils.pagination(res, (current) => {
+                        _this.params.page = current
+                    })
+                })
+            }
+        })
+    }
     static jsonp(options) {
         return new Promise((resolve, reject) => {
             JsonP(options.url, {
