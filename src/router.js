@@ -18,6 +18,12 @@ import City from './pages/city'
 import Order from './pages/order'
 import User from './pages/user'
 import Admin from './admin'
+import BikeMap from './pages/map/bikeMap'
+import Bar from './pages/echarts/bar'
+import Pie from './pages/echarts/pie'
+import Line from './pages/echarts/line'
+import Rich from './pages/rich'
+import Perimission from "./pages/permission";
 import NoMatch from './pages/nomatch'
 
 import Common from './common'
@@ -47,6 +53,12 @@ export default class IRouter extends React.Component {
                                 <Route path="/admin/city" component={City}></Route>
                                 <Route path="/admin/order" component={Order}></Route>
                                 <Route path="/admin/user" component={User}></Route>
+                                <Route path="/admin/bikeMap" component={BikeMap}></Route>
+                                <Route path="/admin/charts/bar" component={Bar}></Route>
+                                <Route path="/admin/charts/pie" component={Pie}></Route>
+                                <Route path="/admin/charts/line" component={Line}></Route>
+                                <Route path="/admin/rich" component={Rich}></Route>
+                                <Route path="/admin/permission" component={Perimission}></Route>
                                 <Route component={NoMatch}></Route>
                             </Switch>
                         </Admin>

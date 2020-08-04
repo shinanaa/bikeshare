@@ -66,6 +66,31 @@ export default class FilterForm extends React.Component{
                         </FormItem>
                     )
                     formItemList.push(RANGEPICKER)
+                } else if(item.type == '城市'){
+                    const city = (
+                        <FormItem
+                            name={field}
+                            rules={rules}
+                            label='城市'
+                            key={field}
+                            {...formItemLayout}
+                            style={FormItemStyles}
+                            >
+                            <Select
+                                labelInValue={labelInValue}
+                                placeholder={placeholder}
+                                allowClear={allowClear}
+                                defaultValue={defaultValue}
+                                style={{ width: '80px'}}
+                                disabled={disabled}
+                            >
+                                {this.getOptionList([
+                                    { id: '0', name: '全部' }, { id: '1', name: '北京' }, { id: '2', name: '天津' }, { id: '3', name: '上海' }
+                                ], 'option')}
+                            </Select>
+                        </FormItem>
+                    )
+                    formItemList.push(city)
                 } else if(item.type == 'INPUT'){
                     const INPUT = (
                         <FormItem
@@ -132,12 +157,14 @@ export default class FilterForm extends React.Component{
     }
     render(){
         return(
-            <Form layout="inline" ref={this.formRef}>
+            <Form layout={this.props.layout || 'inline'} ref={this.formRef}>
                 { this.initFormList() }
-                <FormItem>
-                    <Button type="primary" style={{ margin: '0 20px' }} onClick={this.handleFilterSubmit}>查询</Button>
-                    <Button onClick={this.reset}>重置</Button>
-                </FormItem>
+                {!this.props.noFoot && (
+                    <FormItem>
+                        <Button type="primary" style={{ margin: '0 20px' }} onClick={this.handleFilterSubmit}>查询</Button>
+                        <Button onClick={this.reset}>重置</Button>
+                    </FormItem>
+                )}
             </Form>
         )
     }
