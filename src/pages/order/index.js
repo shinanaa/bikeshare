@@ -148,7 +148,7 @@ export default class Order extends React.Component {
                 dataIndex: 'user_pay'
             }
           ]
-          const formItemLayout = {
+        const formItemLayout = {
             labelCol:{span:5},
             wrapperCol:{span:19}
         }
